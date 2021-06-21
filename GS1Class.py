@@ -121,5 +121,10 @@ class Page:
             '//*[@id="dtProductList"]/tbody/tr[1]/td[3]/a').click()
 
         pass
+    def create_and_download(self, obj):
+        self.create_new(self, obj)
+        self.download()
+
+        return
 
 

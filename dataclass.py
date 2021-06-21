@@ -10,7 +10,6 @@ Need to make Template item have Len and make subscriptable.
 Also come up with a better fucking name.
 '''
 
-     return f'{self.sku} - {self.name}'
 
 class Item:
     def __init__(self, SKU, Name):
