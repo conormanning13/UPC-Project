@@ -1,0 +1,6 @@
+/venv/
+chromedriver
+__pycache__
+.DS_Store
+config.py
+
