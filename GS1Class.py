@@ -115,10 +115,19 @@ class Page:
         # returns the UPC into the object.
         return self.upc
 
-    def find_existing(self):
+    def find_existing(self, sku):
+        download_path = os.path.expanduser('~') + '\\downloads\\'
         driver = self.driver
-        driver.find_element_by_xpath(
-            '//*[@id="dtProductList"]/tbody/tr[1]/td[3]/a').click()
+        sku_field = driver.find_element_by_xpath('//input[@id="dtProductListSKU5"]')
+        sku_field.send_keys(sku)
+        time.sleep(1)
+        driver.find_element_by_xpath('//*[@id="dtProductList"]/tbody/tr/td[3]/a').click()
+        upc = self.download()
+        old_file = f'00{upc} UPC-A SST1.png'
+        new_file = f'{sku} UPC.png'
+        os.rename(download_path + old_file, download_path + new_file)
+##        Rename file? 
+        driver.get('https://dh.gs1us.org/Product/Home')      
 
         pass
     def create_and_download(self, obj):
